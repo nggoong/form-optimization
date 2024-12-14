@@ -12,6 +12,7 @@ const FastInput = ({name, wasSubmitted}: Props) => {
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const currentTarget = e.currentTarget as HTMLInputElement;
     const value = currentTarget.value;
+    console.log(name, 'value:' + value)
     setInputValue(value);
   }
   const handleBlur = (e:React.FocusEvent<HTMLInputElement>) => {
@@ -29,7 +30,6 @@ const FastInput = ({name, wasSubmitted}: Props) => {
       onBlur={handleBlur}
       value={inputValue}
       pattern="[a-z]{3,10}"
-      required
       aria-describedby={displayErrorMessage ? `${name}-error`: undefined}
       />
       {displayErrorMessage ? (

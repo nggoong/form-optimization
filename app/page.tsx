@@ -2,6 +2,7 @@
 import Slowform from "./components/slowform/slowform";
 import Fastform from "./components/fastform/fastform";
 import { Profiler} from "react";
+import GeneralForm from "./components/generalform/generalform";
 const Home = () => {
   const onRender = (id:any, phase:any, actualDuration:any, baseDuration:any, startTime:any, commitTime:any) => {
     console.log('id: ' + id);
@@ -21,6 +22,7 @@ const Home = () => {
       <Profiler id="fastform" onRender={onRender}>
       <Fastform/>
       </Profiler>
+      <GeneralForm/>
     </>
   )
 }
