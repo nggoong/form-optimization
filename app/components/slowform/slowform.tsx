@@ -1,7 +1,8 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SlowInput from "./slowInput";
-const fieldNames = ['name', "job", "age", "gender", "location", "school", 'car', 'cigar'];
+import fieldNames from "@/constants/fieldNames";
+
 
 const Slowform = () => {
   const [fieldValues, setFieldValues] = useState({
@@ -30,6 +31,11 @@ const Slowform = () => {
       [currentTarget.name]: true
     })
   }
+
+  useEffect(() => {
+    console.log("fieldValues")
+    console.log(fieldValues)
+  }, [fieldValues])
   return (
     <form noValidate onSubmit={handleSubmit}>
       {fieldNames.map((name) => (
