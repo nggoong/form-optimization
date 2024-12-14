@@ -5,6 +5,7 @@ const Fastform= () => {
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const formAction = (value:FormData) => {
     console.log(value);
+    
   } 
   return(
     <>
@@ -12,7 +13,6 @@ const Fastform= () => {
         {fieldNames.map((name:string) => <FastInput name={name} wasSubmitted={wasSubmitted} key={name}/>)}
         <button type="submit">fastform Submit</button>
       </form>
-      
     </>
   )
 }
