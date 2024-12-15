@@ -38,10 +38,10 @@ const Slowform = () => {
   }, [fieldValues])
   return (
     <form noValidate onSubmit={handleSubmit}>
-      {fieldNames.map((name) => (
+      {fieldNames.map((fieldName) => (
         <SlowInput
-        key={name}
-        name={name}
+        key={fieldName.name}
+        name={fieldName.name}
         fieldValues={fieldValues}
         touchedFields={touchedFields}
         wasSubmitted={wasSubmitted}
