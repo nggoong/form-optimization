@@ -15,13 +15,13 @@ const Home = () => {
   return(
     <>
       <h1>SlowForm</h1>
-      <Profiler id="slowform" onRender={onRender}>
+      {/* <Profiler id="slowform" onRender={onRender}> */}
       <Slowform/>
-      </Profiler>
+      {/* </Profiler> */}
       <h1>FastForm</h1>
-      <Profiler id="fastform" onRender={onRender}>
+      {/* <Profiler id="fastform" onRender={onRender}> */}
       <Fastform/>
-      </Profiler>
+      {/* </Profiler> */}
       <GeneralForm/>
     </>
   )
