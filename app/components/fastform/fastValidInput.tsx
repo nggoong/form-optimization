@@ -1,8 +1,9 @@
 'use client'
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PenaltyComp from "../penaltyComp/penaltyComp";
-import { userContextState, userContextDispatch } from "@/app/context/userInputform";
 import useuserInputContextDispatch from "@/app/hooks/context/useuserInputContextDispatch";
+import useuserInputContextState from "@/app/hooks/context/useuserInputContextState";
+import UserInputContextComponent from "@/app/context/wrapperComponent/userInputContextComponent";
 // import { Action } from "@/app/context/contextType/typings";
 interface Props {
   name:string;
@@ -10,8 +11,7 @@ interface Props {
 }
 
 const FastValidInput = ({name, wasSubmitted}: Props) => {
-  const userInputContextState = useContext(userContextState);
-  // const userInputContextDispatch = useContext(userContextDispatch);
+  const userInputContextState = useuserInputContextState();
   const userInputContextDispatch = useuserInputContextDispatch();
 
   
@@ -25,6 +25,10 @@ const FastValidInput = ({name, wasSubmitted}: Props) => {
     setInputValue(value);
   }
   const handleBlur = (e:React.FocusEvent<HTMLInputElement>) => {
+    const currentTarget = e.currentTarget as HTMLInputElement;
+    const targetName = currentTarget.name;
+    const value = currentTarget.value;
+    userInputContextDispatch({type:"SET_INFO", value:{[targetName]:value}})
     setTouched(true);
   }
 
@@ -34,6 +38,7 @@ const FastValidInput = ({name, wasSubmitted}: Props) => {
     })
   }, [])
   return(
+    <UserInputContextComponent>
     <div>
       <PenaltyComp/>
       <label htmlFor={`${name}-input`}>{name}</label>
@@ -51,6 +56,7 @@ const FastValidInput = ({name, wasSubmitted}: Props) => {
         <span role="alert" id={`${name}-error`} className="error-message">{errorMessage}</span>
       ): null}
     </div>
+    </UserInputContextComponent>
   )
 }
 

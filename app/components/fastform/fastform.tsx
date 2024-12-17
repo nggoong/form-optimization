@@ -25,7 +25,6 @@ const Fastform = () => {
                 <UserInputContextComponent>
                   <FastValidInput
                     name={fieldName.name}
-                    
                     wasSubmitted={wasSubmitted}
                     key={fieldName.name}
                   />

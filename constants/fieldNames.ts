@@ -25,11 +25,11 @@ const fieldNames = [
   },
   {
     name:'password',
-    isValid:false
+    isValid:true
   },
   {
     name:'passwordConfirm',
-    isValid:false
+    isValid:true
   },
 ]
 
