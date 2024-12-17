@@ -1,8 +1,11 @@
+'use client'
+import React from 'react';
 import fieldNames from "@/constants/fieldNames";
 import FastInput from "./fastInput";
 import { useState } from "react";
 import { inputFormDataType } from "@/app/util/typings/inputFormType";
 import UserInputContextComponent from "@/app/context/wrapperComponent/userInputContextComponent";
+import FastValidInput from './fastValidInput';
 
 const Fastform = () => {
   const [wasSubmitted, setWasSubmitted] = useState(false);
@@ -18,25 +21,26 @@ const Fastform = () => {
         {fieldNames.map((fieldName: inputFormDataType) => {
           if (fieldName.isValid) {
             return (
-              <>
+              <React.Fragment key={fieldName.name}>
                 <UserInputContextComponent>
-                  <FastInput
+                  <FastValidInput
                     name={fieldName.name}
+                    
                     wasSubmitted={wasSubmitted}
                     key={fieldName.name}
                   />
                 </UserInputContextComponent>
-              </>
+              </React.Fragment>
             );
           } else {
             return (
-              <>
+              <React.Fragment key={fieldName.name}>
                 <FastInput
                   name={fieldName.name}
                   wasSubmitted={wasSubmitted}
                   key={fieldName.name}
                 />
-              </>
+              </React.Fragment>
             );
           }
         })}

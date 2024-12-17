@@ -1,13 +1,7 @@
 import React, {useReducer, createContext, PropsWithChildren, Dispatch} from 'react'
-
+import { UserState, Action } from './contextType/typings';
 // 폼의 유효성 검사를 제출 전 미리 하기 위한 특정 폼 데이터만 전역으로 관리하는 context
-
-interface UserState {
-
-}
 const defaultUserInfo = {}
-
-type Action = { type: 'SET_DEFAULT'} | {type:"SET_INFO", value:UserState};
 type TypeUserDispatch = Dispatch<Action>;
 
 export const userContextState = createContext<UserState | undefined>(undefined);
